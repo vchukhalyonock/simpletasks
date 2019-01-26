@@ -27,16 +27,16 @@ class Ajax extends Controller {
      *
      */
     public function tasks() {
-        switch ($this->request()->get('sort')) {
-            case 'name':
+        switch ($this->request()->get('order')[0]['column']) {
+            case '2':
                 $order = 'name';
                 break;
 
-            case 'email':
+            case '1':
                 $order = 'email';
                 break;
 
-            case 'status':
+            case '3':
                 $order = 'status';
                 break;
 
@@ -45,7 +45,7 @@ class Ajax extends Controller {
                 break;
         }
 
-        switch ($this->request()->get('direction')) {
+        switch ($this->request()->get('order')[0]['dir']) {
             case 'asc':
             default:
                 $orderDirection = 'ASC';
