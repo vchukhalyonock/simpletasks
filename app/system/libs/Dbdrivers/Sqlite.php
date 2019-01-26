@@ -136,7 +136,7 @@ class Sqlite extends \SQLite3 implements IDb {
 
 
     /**
-     * 
+     *
      */
     public function __destruct() {
         $this->close();

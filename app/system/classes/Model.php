@@ -17,7 +17,7 @@ abstract class Model implements IModel {
         }
     }
 
-    public function find(array $params = array(), $limit = 0, $offset = 0) {
+    public function find(array $params = array()) {
         // TODO: Implement find() method.
     }
 
