@@ -14,7 +14,7 @@ class Sqlite extends \SQLite3 implements IDb {
      * Sqlite constructor.
      */
     public function __construct() {
-        $this->open(__DIR__ . '/../../../' . getenv('DB_PATH') . '/' . getenv('DB_FILE'));
+        $this->open(__DIR__ . '/../../../../' . getenv('DB_PATH') . '/' . getenv('DB_FILE'));
     }
 
     /**
@@ -53,16 +53,20 @@ class Sqlite extends \SQLite3 implements IDb {
         $where = isset($query['where']) ? ' WHERE ' . $query['where'] : '';
         $limit = isset($query['limit']) ? ' LIMIT ' . $query['limit'] : null;
         $offset = isset($query['offset']) ? ' OFFSET ' . $query['offset'] : null;
+        $order = isset($query['order']) ? ' ORDER BY ' . $query['order'] : null;
         $result = [];
 
         $sql = "SELECT {$selectFields} FROM {$table} {$where} ";
+        if(!is_null($order))
+            $sql .= $order;
+
         if(!is_null($limit))
             $sql .= $limit;
 
         if(!is_null($offset))
             $sql .= $offset;
 
-        $res = $this->exec($sql);
+        $res = $this->query($sql);
         if(!$res)
             throw new \Exception($this->lastErrorMsg());
 

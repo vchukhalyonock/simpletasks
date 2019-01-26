@@ -8,11 +8,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <title>Hello, world!</title>
+    <title>Simple Tasks!</title>
 </head>
 <body>
-<h1>Simple tasks!</h1>
 <div class="container">
+    <h1>Simple tasks!</h1>
+    
     <table class="table">
         <thead>
         <tr>
@@ -22,6 +23,15 @@
             <th scope="col">Status</th>
             <th scope="col">Task</th>
         </tr>
+        <?php foreach ($tasks as $key => $task):?>
+            <tr>
+                <td><?php echo $task['id']?></td>
+                <td><?php echo $task['email']?></td>
+                <td><?php echo $task['name']?></td>
+                <td><?php echo $task['status']?></td>
+                <td><?php echo $task['task']?></td>
+            </tr>
+        <?php endforeach;?>
         </thead>
         <tbody>
 
