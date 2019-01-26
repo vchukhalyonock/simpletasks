@@ -46,7 +46,7 @@ $(document).ready(() => {
         columnDefs: [ {
             "targets": -1,
             "data": null,
-            "defaultContent": "<button type=\"button\" class=\"btn btn-info\">Edit</button>&nbsp;&nbsp;<button type=\"button\" class=\"btn btn-danger\">Delete</button>"
+            "defaultContent": "<button type=\"button\" class=\"btn btn-info\">Edit</button>"
         } ],
         lengthChange: false,
         pageLength: 3
@@ -54,11 +54,13 @@ $(document).ready(() => {
 
     $('#tasks-table-admin tbody').on( 'click', '.btn-info', function () {
         let data = tableAdmin.row( $(this).parents('tr') ).data();
-        alert("EDIT:" + data.id);
+        //alert("EDIT:" + data.id);
+        $.ajax({
+            url: '/admin/task/?id=' + data.id,
+            success: (data) => {
+                alert(JSON.stringify(data));
+            }
+        })
     } );
 
-    $('#tasks-table-admin tbody').on( 'click', '.btn-danger', function () {
-        let data = tableAdmin.row( $(this).parents('tr') ).data();
-        alert("DELETE:" + data.id);
-    } );
 } );

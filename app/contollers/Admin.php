@@ -27,6 +27,28 @@ class Admin extends Controller {
     }
 
 
+    public function task() {
+        $this->responseJSON(['task' => $this->_tasks->get($this->request()->get('id'))]);
+    }
+
+
+    public function update() {
+        try {
+            $this->_tasks->update(
+                $this->request()->post('id'),
+                [
+                    'text' => $this->request()->post('text'),
+                    'status' => $this->request()->post('status') ? 'done' : 'new'
+                ]
+            );
+        } catch (\Exception $e) {
+            $this->responseJSON(['error' => $e->getMessage()]);
+        }
+
+        $this->responseJSON(['result' => true]);
+    }
+
+
     public function login() {
         if($this->_login == $this->request()->post('login') &&
             $this->_password == $this->request()->post('password')) {
