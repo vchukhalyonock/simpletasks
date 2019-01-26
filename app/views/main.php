@@ -11,7 +11,23 @@
     <title>Hello, world!</title>
 </head>
 <body>
-<h1>Hello, world!</h1>
+<h1>Simple tasks!</h1>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Task</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
