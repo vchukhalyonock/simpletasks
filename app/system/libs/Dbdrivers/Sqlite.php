@@ -31,8 +31,8 @@ class Sqlite extends \SQLite3 implements IDb {
             $values[] =  "'" . str_replace("'", "\'", $value) . "'";
         }
 
-        $sql = "INSERT INTO " . strval($table) . " VALUES (" . implode(",", $fields)
-            . implode("," , $values) . ")";
+        $sql = "INSERT INTO " . strval($table) . " (" . implode(",", $fields) . ")"
+            . " VALUES (" . implode("," , $values) . ")";
 
         $res = $this->exec($sql);
 

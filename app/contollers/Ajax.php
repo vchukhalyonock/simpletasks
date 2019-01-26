@@ -70,4 +70,21 @@ class Ajax extends Controller {
             'recordsFiltered' => $total
         ]);
     }
+
+    public function create() {
+        try {
+            $this->_tasks->create(
+                [
+                    'email' => $this->request()->post('email'),
+                    'name' => $this->request()->post('name'),
+                    'task' => $this->request()->post('task'),
+                    'status' => 'new'
+                ]
+            );
+        } catch (\Exception $e) {
+            $this->responseJSON(['error' => $e->getMessage()], 500);
+        }
+
+        $this->responseJSON(['result' => true]);
+    }
 }

@@ -17,34 +17,6 @@ class Main extends Controller {
     }
 
     public function index() {
-        /*$this->render('main', ['tasks' => $this->_tasks->find([
-            'limit' => $this->_onPage,
-            'offset' => 0
-        ])]);*/
         $this->render('main', ['tasks' => []]);
-    }
-
-
-    public function create_task() {
-        try {
-            $this->_tasks->update(
-                $this->request()->post('id'),
-                [
-                    'email' => $this->request()->post('email'),
-                    'name' => $this->request()->post('name'),
-                    'task' => $this->request()->post('task'),
-                    'status' => 'new'
-                ]
-            );
-        } catch (\Exception $e) {
-            $this->response()->setBody('Somethig was wrong :' . $e->getMessage());
-        }
-
-        $this->render(
-            'main',
-            [
-                'tasks' => $this->_tasks->find([])
-            ]
-        );
     }
 }

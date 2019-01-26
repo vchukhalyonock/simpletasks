@@ -14,7 +14,11 @@
 <body>
 <div class="container">
     <h1>Simple tasks!</h1>
-
+    <div class="row justify-content-end">
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#createTaskModal">Create Task</button>
+        </div>
+    </div>
     <table id="tasks-table" class="stripe" style="width:100%">
         <thead>
         <tr>
@@ -37,6 +41,40 @@
         <?php endforeach;?>
         </tbody>
     </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="createTaskModal" tabindex="-1" role="dialog" aria-labelledby="createTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createTaskModalLabel">Create New Task</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="create-task-form">
+            <div class="modal-body">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerName">Your name</label>
+                        <input type="text" class="form-control" id="customerName" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="task">Task</label>
+                        <textarea class="form-control" id="task" name="task" rows="3" required></textarea>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <!-- Optional JavaScript -->
