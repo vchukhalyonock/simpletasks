@@ -23,15 +23,15 @@ class Router implements IRouter {
 
     private function _setController() {
         $pathParts = explode("/", $this->_request->path());
-        $this->_controller = isset($pathParts[0]) && !empty(trim($pathParts[0]))
-            ? ucfirst(trim($pathParts[0]))
+        $this->_controller = isset($pathParts[1]) && !empty(trim($pathParts[1]))
+            ? ucfirst(trim($pathParts[1]))
             : ucfirst(getenv('DEFAULT_CONTROLLER'));
     }
 
     private function _setMethod() {
         $pathParts = explode("/", $this->_request->path());
-        $this->_method = isset($pathParts[1]) && !empty(trim($pathParts[1]))
-            ? lcfirst(trim($pathParts[1]))
+        $this->_method = isset($pathParts[2]) && !empty(trim($pathParts[2]))
+            ? lcfirst(trim($pathParts[2]))
             : lcfirst(getenv('DEFAULT_METHOD'));
     }
 

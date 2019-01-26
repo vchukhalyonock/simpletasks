@@ -7,4 +7,5 @@ interface IDb {
     public function update($table, array $query = array());
     public function find($table, array $query = array());
     public function delete($table, array $query = array());
+    public function rawSQL($sql);
 }

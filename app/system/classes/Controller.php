@@ -45,4 +45,16 @@ abstract class Controller implements IController {
     protected function render($templateName, array $params = array()) {
         $this->_view->render($templateName, $params);
     }
+
+
+    /**
+     * @param $data
+     * @param int $code
+     */
+    protected function responseJSON($data, $code = 200) {
+        $this->response()->setHeader("Content-Type", "application/json");
+        $this->response()->setCode($code);
+        $this->response()->setBody(json_encode($data));
+        $this->response()->send();
+    }
 }

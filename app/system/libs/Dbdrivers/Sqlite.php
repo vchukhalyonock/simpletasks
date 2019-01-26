@@ -130,12 +130,20 @@ class Sqlite extends \SQLite3 implements IDb {
 
     /**
      * @param $sql
+     * @return array
      * @throws \Exception
      */
     public function rawSQL($sql) {
-        $res = $this->exec($sql);
+        $result = [];
+        $res = $this->query($sql);
         if(!$res)
             throw new \Exception($this->lastErrorMsg());
+
+        while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
+            $result[] = $row;
+        }
+
+        return $result;
     }
 
 

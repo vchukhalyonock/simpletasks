@@ -103,4 +103,19 @@ abstract class Model implements IModel {
             throw new \Exception($e->getMessage());
         }
     }
+
+
+    /**
+     * @return int
+     * @throws \Exception
+     */
+    public function total() {
+        try {
+            $res = $this->dbInstance->rawSQL("SELECT COUNT(*) as count FROM {$this->tableName}");
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
+
+        return $res ? $res[0]['count'] : 0;
+    }
 }

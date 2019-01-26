@@ -23,6 +23,8 @@ class Request implements IRequest {
         $this->_setHeaders();
         $this->_setMethod();
         $this->_setPath();
+        $this->_setPostParameters();
+        $this->_setGetParameters();
     }
 
     /**
