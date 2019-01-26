@@ -83,7 +83,7 @@ class Sqlite extends \SQLite3 implements IDb {
     public function delete($table, array $query = array()) {
         $sql = "DELETE FROM {$table} ";
         if(isset($query['where']))
-            $sql .= $query['where'];
+            $sql .= ' WHERE ' . $query['where'];
 
         $res = $this->exec($sql);
 

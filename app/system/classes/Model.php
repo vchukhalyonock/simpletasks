@@ -8,6 +8,7 @@ abstract class Model implements IModel {
 
     protected $dbInstance;
     protected $tableName;
+    protected $idField = 'id';
 
     public function __construct() {
         try {
@@ -17,23 +18,89 @@ abstract class Model implements IModel {
         }
     }
 
+    /**
+     * @param array $params
+     * @return mixed
+     * @throws \Exception
+     */
     public function find(array $params = array()) {
-        // TODO: Implement find() method.
+        try {
+            $findResult = $this->dbInstance->find(
+                $this->tableName,
+                $params
+            );
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
+
+        return $findResult;
     }
 
+    /**
+     * @param $id
+     * @throws \Exception
+     */
     public function delete($id) {
-        // TODO: Implement delete() method.
+        try {
+            $this->dbInstance->delete(
+                $this->tableName,
+                ['where' => $this->idField . "='{$id}'"]
+            );
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
     }
 
+
+    /**
+     * @param $id
+     * @return mixed|null
+     * @throws \Exception
+     */
     public function get($id) {
-        // TODO: Implement get() method.
+        try {
+            $findResult = $this->dbInstance->find(
+                $this->tableName,
+                [
+                    'limit' => 1,
+                    'where' => $this->idField . "='{$id}'"
+                ]
+            );
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
+
+        return $findResult && is_array($findResult) ? $findResult[0] : null;
     }
 
+    /**
+     * @param array $params
+     * @throws \Exception
+     */
     public function create(array $params = array()) {
-        // TODO: Implement create() method.
+        try {
+            $this->dbInstance->insert(
+                $this->tableName,
+                $params
+            );
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
     }
 
+    /**
+     * @param $id
+     * @param array $params
+     * @throws \Exception
+     */
     public function update($id, array $params = array()) {
-        // TODO: Implement update() method.
+        try {
+            $this->dbInstance->update(
+                $this->tableName,
+                $params
+            );
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
     }
 }
