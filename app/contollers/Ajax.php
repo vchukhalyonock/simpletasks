@@ -27,8 +27,6 @@ class Ajax extends Controller {
      *
      */
     public function tasks() {
-        $offset = $this->request()->get('start') ? ($this->request()->get('start') - 1) : 0;
-
         switch ($this->request()->get('sort')) {
             case 'name':
                 $order = 'name';
