@@ -3,6 +3,7 @@
 namespace App\System;
 
 use App\System\Classes\Request;
+use App\System\Classes\Response;
 use App\System\Classes\Router;
 
 class App {
@@ -17,11 +18,16 @@ class App {
         if(class_exists('App\\Controllers\\' . $this->_router->getController())) {
             $controller = 'App\\Controllers\\' . $this->_router->getController();
             $this->_controller = new $controller();
-        } elseif(method_exists($this->_controller, $this->_router->getMethod())) {
-            $method = $this->_router->getMethod();
-            $this->_controller->$method();
-        } else {
-            //Not found
+            if(method_exists($this->_controller, $this->_router->getMethod())) {
+                $method = $this->_router->getMethod();
+                $this->_controller->$method();
+                return;
+            }
         }
+
+        $response = new Response();
+        $response->setCode(404);
+        $response->setBody("Page not found");
+        $response->send();
     }
 }

@@ -31,8 +31,8 @@ class Router implements IRouter {
     private function _setMethod() {
         $pathParts = explode("/", $this->_request->path());
         $this->_method = isset($pathParts[1]) && !empty(trim($pathParts[1]))
-            ? ucfirst(trim($pathParts[1]))
-            : ucfirst(getenv('DEFAULT_METHOD'));
+            ? lcfirst(trim($pathParts[1]))
+            : lcfirst(getenv('DEFAULT_METHOD'));
     }
 
     /**
