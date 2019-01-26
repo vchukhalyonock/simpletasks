@@ -15,6 +15,11 @@ class App {
     public function __construct() {
         $this->_request = new Request();
         $this->_router = new Router($this->_request);
+        $this->_init();
+    }
+
+
+    private function _init() {
         if(class_exists('App\\Controllers\\' . $this->_router->getController())) {
             $controller = 'App\\Controllers\\' . $this->_router->getController();
             $this->_controller = new $controller();
@@ -25,6 +30,10 @@ class App {
             }
         }
 
+        $this->_page404();
+    }
+
+    private function _page404() {
         $response = new Response();
         $response->setCode(404);
         $response->setBody("Page not found");
