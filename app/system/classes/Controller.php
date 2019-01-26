@@ -12,6 +12,7 @@ abstract class Controller implements IController {
 
     protected $_request;
     protected $_response;
+    protected $_view;
 
     /**
      * Controller constructor.
@@ -19,6 +20,7 @@ abstract class Controller implements IController {
     public function __construct() {
         $this->_request = new Request();
         $this->_response = new Response();
+        $this->_view = new View();
     }
 
     /**
@@ -33,5 +35,14 @@ abstract class Controller implements IController {
      */
     protected function response() {
         return $this->_response;
+    }
+
+
+    /**
+     * @param $templateName
+     * @param array $params
+     */
+    protected function render($templateName, array $params = array()) {
+        $this->_view->render($templateName, $params);
     }
 }

@@ -13,7 +13,7 @@ class Response implements IResponse {
     public function send() {
         http_response_code($this->_code);
         foreach ($this->_headers as $key => $value)
-            header($key, true, $value);
+            header("{$key}: {$value}");
         echo $this->_body;
     }
 
