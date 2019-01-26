@@ -7,6 +7,7 @@ use App\System\Classes\Controller;
 class Main extends Controller {
 
     public function index() {
-        echo "Test main";
+        $this->response()->setBody('Main default controller');
+        $this->response()->send();
     }
 }
