@@ -2,22 +2,25 @@
 
 namespace App\Controllers;
 
+use App\Models\Tasks;
 use App\System\Classes\Controller;
 
 class Admin extends Controller {
 
     private $_login = 'admin';
     private $_password = '123';
+    private $_tasks;
 
     public function __construct() {
         session_start();
         parent::__construct();
+        $this->_tasks = new Tasks();
     }
 
 
     public function index() {
         if($this->_isLoggedIn()) {
-            echo "Logged IN";
+            $this->render('admin');
         } else {
             $this->render('admin_login');
         }

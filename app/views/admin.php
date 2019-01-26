@@ -19,7 +19,7 @@
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#createTaskModal">Create Task</button>
         </div>
     </div>
-    <table id="tasks-table" class="stripe" style="width:100%">
+    <table id="tasks-table-admin" class="stripe" style="width:100%">
         <thead>
         <tr>
             <th>#</th>
@@ -27,6 +27,7 @@
             <th>Name</th>
             <th>Status</th>
             <th>Task</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -45,7 +46,7 @@
                 </button>
             </div>
             <form id="create-task-form">
-            <div class="modal-body">
+                <div class="modal-body">
                     <div class="form-group">
                         <label for="email">Email address</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
@@ -58,11 +59,11 @@
                         <label for="task">Task</label>
                         <textarea class="form-control" id="task" name="task" rows="3" required></textarea>
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
             </form>
         </div>
     </div>
