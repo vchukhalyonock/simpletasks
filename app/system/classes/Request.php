@@ -62,11 +62,11 @@ class Request implements IRequest {
 
 
     /**
-     * 
+     *
      */
     private function _setGetParameters() {
         $this->_getParameters = $_GET;
-        return
+        return;
     }
 
 
