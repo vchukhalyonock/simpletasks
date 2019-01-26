@@ -1,3 +1,6 @@
 {
 
+    "require": {
+        "vlucas/phpdotenv": "^3.2"
+    }
 }
