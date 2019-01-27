@@ -54,11 +54,17 @@ $(document).ready(() => {
 
     $('#tasks-table-admin tbody').on( 'click', '.btn-info', function () {
         let data = tableAdmin.row( $(this).parents('tr') ).data();
-        //alert("EDIT:" + data.id);
         $.ajax({
             url: '/admin/task/?id=' + data.id,
             success: (data) => {
-                alert(JSON.stringify(data));
+                $('#updateTaskModal').modal('show');
+                $('#taskId').val(data.task.id);
+                $('#task').text(data.task.task);
+                if (data.task.status == 'done') {
+                    $('#statusCheck').attr('checked', true);
+                } else {
+                    $('#statusCheck').attr('checked', false);
+                }
             }
         })
     } );

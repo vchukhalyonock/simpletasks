@@ -36,7 +36,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="createTaskModal" tabindex="-1" role="dialog" aria-labelledby="createTaskModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateTaskModal" tabindex="-1" role="dialog" aria-labelledby="createTaskModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -46,18 +46,15 @@
                 </button>
             </div>
             <form id="create-task-form">
+                <input type="hidden" name="id" id="taskId" value="">
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="customerName">Your name</label>
-                        <input type="text" class="form-control" id="customerName" name="name" placeholder="Enter your name" required>
-                    </div>
                     <div class="form-group">
                         <label for="task">Task</label>
                         <textarea class="form-control" id="task" name="task" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="statusCheck">
+                        <label class="form-check-label" for="statusCheck">Done</label>
                     </div>
                 </div>
                 <div class="modal-footer">
