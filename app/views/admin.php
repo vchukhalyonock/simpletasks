@@ -45,7 +45,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="create-task-form">
+            <form id="update-task-form">
                 <input type="hidden" name="id" id="taskId" value="">
                 <div class="modal-body">
                     <div class="form-group">
@@ -53,7 +53,7 @@
                         <textarea class="form-control" id="task" name="task" rows="3" required></textarea>
                     </div>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="statusCheck">
+                        <input type="checkbox" class="form-check-input" id="statusCheck" name="status" value="done">
                         <label class="form-check-label" for="statusCheck">Done</label>
                     </div>
                 </div>

@@ -37,7 +37,7 @@ class Admin extends Controller {
             $this->_tasks->update(
                 $this->request()->post('id'),
                 [
-                    'text' => $this->request()->post('text'),
+                    'task' => $this->request()->post('task'),
                     'status' => $this->request()->post('status') ? 'done' : 'new'
                 ]
             );

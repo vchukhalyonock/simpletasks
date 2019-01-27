@@ -97,7 +97,10 @@ abstract class Model implements IModel {
         try {
             $this->dbInstance->update(
                 $this->tableName,
-                $params
+                [
+                    'fields' => $params,
+                    'where' => $this->idField . "='{$id}'"
+                ]
             );
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());

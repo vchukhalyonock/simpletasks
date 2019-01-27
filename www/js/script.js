@@ -58,7 +58,7 @@ $(document).ready(() => {
             url: '/admin/task/?id=' + data.id,
             success: (data) => {
                 $('#updateTaskModal').modal('show');
-                $('#taskId').val(data.task.id);
+                $('#taskId').attr("value", data.task.id);
                 $('#task').text(data.task.task);
                 if (data.task.status == 'done') {
                     $('#statusCheck').attr('checked', true);
@@ -68,5 +68,21 @@ $(document).ready(() => {
             }
         })
     } );
+
+
+    $('#update-task-form').submit((e) => {
+        $.ajax({
+            type: "post",
+            url: '/admin/update',
+            data: $('#update-task-form').serialize(),
+            success: (data) => {
+                $('#update-task-form')[0].reset();
+                $('#updateTaskModal').modal('hide');
+                tableAdmin.ajax.reload();
+            }
+        });
+
+        e.preventDefault();
+    });
 
 } );
