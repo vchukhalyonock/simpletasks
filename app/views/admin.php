@@ -13,12 +13,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Simple tasks!</h1>
-    <div class="row justify-content-end">
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#createTaskModal">Create Task</button>
-        </div>
-    </div>
+    <h1>Simple tasks - admin page!</h1>
     <table id="tasks-table-admin" class="stripe" style="width:100%">
         <thead>
         <tr>
